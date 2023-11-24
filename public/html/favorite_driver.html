@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Формула-1 для новичков</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/favorite_driver.css">
+    <script src="https://kit.fontawesome.com/b3e30a45ea.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo"> 
+        <img src="../img/logo2.jpeg" alt="Формула-1 для новичков">
+      </div>
+      <nav>
+        <ul class="topmenu">
+          <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="topmenu navbar-nav">
+              <li ><a href="../html/index.html">Главная</a></li>
+              <li><a href="../html/schedule.html">Расписание</a></li>
+              <li><a href="../html/drivers.html">Пилоты</a></li>
+              <li><a href="../html/teams.html">Команды</a></li>
+              <li><a href="../html/results.html" class="active">Результаты</a>
+                <ul class="submenu">
+                  <li><a href="../html/chart.html">Статистика</a></li>
+                  <li><a href="../html/favorite_driver.html">Гонщик недели</a></li>
+                  <li><a href="../html/race_results.html">Результаты заездов</a></li>
+                  <li><a href="" class="submenu-link">Чемпионаты</a>
+                    <ul class="submenu">
+                      <li><a href="../html/personal_credit.html">Личный зачёт</a></li>
+                      <li><a href="../html/world_cup.html">Кубок конструкторов</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="../html/history.html">История</a></li>
+              <li><a href="../html/tracks.html">Трассы</a></li>
+              <li><a href="../html/dict.html">Словарь</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+        <form id="raceWeek" name="submit-to-google-sheet" class="raceWeek">
+            <h2>Гонщик недели</h2>
+            <label class = "driver" for="driver">Выберите гонщика недели:</label>
+            <select id="favoriteDriver" name="favoriteDriver">
+                <option value="Макс Ферстаппен">Макс Ферстаппен</option>
+                <option value="Серхио Перес">Серхио Перес</option>
+                <option value="Чарль Леклерк">Чарльз Леклерк</option>
+                <option value="Льюис Хамильтон">Льюис Хамильтон</option>
+                <option value="Ландо Норрис">Ландо Норрис</option>
+                <option value="Джордж Рассел">Джордж Рассел</option>
+                <option value="Карлос Сайнз">Карлос Сайнз</option>
+                <option value="Оскар Пиастри">Оскар Пиастри</option>
+              </select>            
+            <textarea id="justification" name="justification" required placeholder="Обьясните свой выбор"></textarea>
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            <span id="sendText"></span>
+        </form>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzassxh_xTH6x-gzR-KhSbkSeeseGUNvl8xeU052A2C6innqdcMoFgdcEqwWewEPg18mg/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const sendText = document.getElementById('sendText')
+
+        form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                sendText.innerHTML = 'Спасибо, ваши данные отправлены успешно!'
+                setTimeout(function(){
+                    sendText.innerHTML = ''
+                }, 3000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+    <footer>
+        <div class="footer">
+        <div class="row">
+            <a href=""><i class="fa fa-paper-plane"></i></a>
+            <a href=""><i class="fa fa-phone-square"></i></a>
+        </div>
+        <div class="row">
+            <ul>
+            <li><a href="">Контакты</a></li>
+            <li><a href="feedback.html">Обратная связь</a></li>
+            <li><a href="help.html">Поддержка</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            Designed By: Regina Nasyrova
+        </div>
+        </div>
+    </footer>
+  </body>
+</html>
