@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { exec } = require('child_process');
-const { GoogleSpreadsheet } = require('google-spreadsheet');
-const bodyParser = require('body-parser');
-
 
 // Отправка статических файлов из папки public
 app.use(express.static(path.join(__dirname, 'public')));
