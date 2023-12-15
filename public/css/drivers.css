@@ -216,7 +216,7 @@ nav li:hover > .submenu {
     font-family: 'Open Sans', sans-serif;
 }
 
-.container {
+.container div {
     background:rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 350px 350px;
@@ -265,6 +265,40 @@ nav li:hover > .submenu {
     transition: .2s ease-in-out;
 }
 
-.driver:nth-child(n+3) {
-    background-color: #e7e7e7d5;
+.container-button{
+    width: 100%;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-new-drivers{
+    width: 400px;
+    padding: 40px;
+}
+
+.add-new-drivers button{
+    background: rgba(121, 1, 1, 0.699);
+    width: 100%;
+    height: 45px;
+    outline: none;
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.4s;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.add-new-drivers a{
+    color:#fff;
+    text-decoration: none;
+}
+
+.add-new-drivers button:hover{
+    transform: scale(1.1);
+    background: rgba(121, 1, 1, 0.699);
+    text-decoration: none;
 }

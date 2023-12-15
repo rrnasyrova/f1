@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Имена водителей</title>
+</head>
+<body>
+   <h1>Имена водителей</h1>
+   
+   {% for name in driver_names %}
+   <form action="/driver_info/{{ name[0] }}" method="get">
+      <button type="submit">{{ name[0] }}</button>
+   </form>
+   {% endfor %}
+   
+   <form action="/all_drivers" method="get">
+      <button type="submit">Посмотреть всех</button>
+   </form>
+</body>
+</html>
