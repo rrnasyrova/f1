@@ -46,36 +46,16 @@
         </div>
       </nav>
     </header>
-    <div class="container">
-        <h1>Макс Ферстаппен</h1>        
-        <div class="slideshow-container">
-            <div class="slide" style="background-image: url(../img/verstapen.jpeg); display: block;"></div>
-            <div class="slide" style="background-image: url(../img/verstapen2.jpeg);"></div>
-            <div class="slide" style="background-image: url(../img/verstapen3.jpeg);"></div>
-        </div>
-        <table>
-            <tr>
-                <th>ДАТА РОЖДЕНИЯ И ВОЗРАСТ</th>
-                <td>30.09.1997, 26 лет</td>
-            </tr>
-            <tr>
-                <th>ГРАЖДАНСТВО</th>
-                <td>Нидерланды</td>
-            </tr>
-            <tr>
-                <th>БОРТОВОЙ НОМЕР</th>
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>КОМАНДА</th>
-                <td>RED BULL RACING</td>
-            </tr>
-            <tr>
-                <th>ТИТУЛОВ ЧЕМПИОНА МИРА</th>
-                <td>3</td>
-            </tr>
-        </table>
-    </div>
+    <h1>{{ driver.driver_name }}</h1>
+
+    <img src="{{ driver.img1 }}" alt="Фотография">
+
+    <p>Дата рождения: {{ driver.date_birth }}</p>
+    <p>Возраст: {{ calculate_age(driver.date_birth) }}</p>
+    <p>Страна: {{ driver.country }}</p>
+    <p>Бортовой номер: {{ driver.number }}</p>
+    <p>Команда: {{ driver.team }}</p>
+    <p>Количество титулов: {{ driver.titlesGP }}</p>
     <footer>
         <div class="footer">
             <div class="row">

@@ -47,128 +47,36 @@
       </nav>
     </header>
     <section class="tracks">
-        <section class="container">
-            <a href="../html/bahrain.html" class="track">
-                <img src="../img/1.png" alt="Трасса 1">
-                <h3>Бахрейн</h3>
-                <p>Bahrain International Circuit</p>
-            </a>
-            <a href="../html/aravia.html" class="track">
-                <img src="../img/2.png" alt="Трасса 2">
-                <h3>Саудовская Аравия</h3>
-                <p>	Jeddah Corniche Circuit</p>
-            </a>
-            <a href="../html/australia.html" class="track">
-                <img src="../img/3.png" alt="Трасса 3">
-                <h3>Австралия</h3>
-                <p>Albert Park Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/4.png" alt="Трасса 4">
-                <h3>Азербайджан</h3>
-                <p>Baku City Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/5.png" alt="Трасса 5">
-                <h3>США</h3>
-                <p>Miami International Autodrome</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/6.png" alt="Трасса 6">
-                <h3>Монако</h3>
-                <p>Circuit de Monaco</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/7.png" alt="Трасса 1">
-                <h3>Испания</h3>
-                <p>Circuit de Barcelona-Catalunya</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/8.png" alt="Трасса 2">
-                <h3>Канада</h3>
-                <p>Circuit Gilles Villeneuve</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/9.png" alt="Трасса 3">
-                <h3>Австрия</h3>
-                <p>Red Bull Ring</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/10.png" alt="Трасса 1">
-                <h3>Великобритания</h3>
-                <p>Silverstone Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/11.png" alt="Трасса 2">
-                <h3>Венгрия</h3>
-                <p>Hungaroring</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/12.png" alt="Трасса 3">
-                <h3>Бельгия</h3>
-                <p>Circuit de Spa-Francorchamps</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/13.png" alt="Трасса 1">
-                <h3>Нидерланды</h3>
-                <p>Circuit Zandvoort</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/14.png" alt="Трасса 2">
-                <h3>Италия</h3>
-                <p>Monza Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/15.png" alt="Трасса 3">
-                <h3>Сингапур</h3>
-                <p>Marina Bay Street Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/16.png" alt="Трасса 1">
-                <h3>Япония</h3>
-                <p>Suzuka International Racing Course</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/17.png" alt="Трасса 2">
-                <h3>Катар</h3>
-                <p>Lusail International Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/18.png" alt="Трасса 3">
-                <h3>США</h3>
-                <p>Circuit of the Americas</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/19.png" alt="Трасса 1">
-                <h3>Мексика</h3>
-                <p>Autódromo Hermanos Rodríguez</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/20.png" alt="Трасса 2">
-                <h3>Бразилия</h3>
-                <p>Interlagos Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/21.png" alt="Трасса 3">
-                <h3>США</h3>
-                <p>Las Vegas Strip Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/22.png" alt="Трасса 3">
-                <h3>Арабские Эмираты</h3>
-                <p>Yas Marina Circuit</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/23.png" alt="Трасса 3">
-                <h3>Россия</h3>
-                <p>Sochi Autodrom</p>
-            </a>
-            <a href="../html/tracks.html" class="track">
-                <img src="../img/24.png" alt="Трасса 3">
-                <h3>Франция</h3>
-                <p>Circuit Paul Ricard</p>
-            </a>
-    </section>
+        <div class="container" id="tracks-list"></div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+          $(document).ready(function() {
+              $.get('/api/tracks', function(data) {
+                  for (var i = 0; i < data.length; i++) {
+                      $('#tracks-list').append('<a href="track.html?id=' + data[i].id + '" class="track"><img src="' + data[i].img1 + '" alt="' + data[i].name_ru + '"><h3>' + data[i].name_ru + '</h3><p>' + data[i].name_eng + '</p></a>');
+                }
+              });
+              ('.track').click(function(e) {
+                  e.preventDefault();
+                  var trackId =(this).data('id');
+                  window.location.href = 'track.html?id=' + trackId;
+              });
+          });
+      </script>
+  </section>
+  <section class="container-button">
+    <div class="add-new-track">
+      <a href="add_new_track.html">
+        <button type="submit">Добавить новую трассу</button>
+      </a>
+      <a href="delete_track.html">
+        <button type="submit">Удалить трассу</button>
+      </a>
+      <a href="change_info_track.html">
+        <button type="submit">Изменить информацию о трассе</button>
+      </a>
+    </div>
+  </section>
   <footer>
     <div class="footer">
       <div class="row">
@@ -178,8 +86,8 @@
       <div class="row">
         <ul>
           <li><a href="">Контакты</a></li>
-          <li><a href="">Обратная связь</a></li>
-          <li><a href="">Поддержка</a></li>
+          <li><a href="feedback.html">Обратная связь</a></li>
+          <li><a href="help.html">Поддержка</a></li>
         </ul>
       </div>
       <div class="row">

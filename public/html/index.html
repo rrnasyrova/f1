@@ -56,8 +56,8 @@
         <div class="slider">
           <div style="background: url('../img/background1.jpg') no-repeat; background-size: cover;">
             <div class="position_center">
-              <h2>Хотите погрузиться в Формулу-1 и разбираться в терминах?</h2>
-                <form action="../html/dict.html">
+              <h2>Хочешь узнать, кто победит в следующей гонке Формулы-1?</h2>
+                <form action="../html/prediction.html">
                   <button type="submit">УЗНАТЬ ПОДРОБНЕЕ</button>
                 </form>
             </div>
@@ -329,7 +329,7 @@
       </div>
       <div class="row">
         <ul>
-          <li><a href="">Контакты</a></li>
+          <li><a href="db_catalog.html">Каталог сущностей</a></li>
           <li><a href="feedback.html">Обратная связь</a></li>
           <li><a href="help.html">Поддержка</a></li>
         </ul>
@@ -339,5 +339,25 @@
       </div>
     </div>
   </footer>
+  <script>
+    const showModal = (openButton, modalContent) =>{
+    const openBtn = document.getElementById(openButton),
+    modalContainer = document.getElementById(modalContent)
+    
+    if(openBtn && modalContainer){
+        openBtn.addEventListener('click', ()=>{
+            modalContainer.classList.add('show-modal')
+        })
+      }
+    }
+    showModal('open-modal','modal-container')
+    const closeBtn = document.querySelectorAll('.close-modal')
+
+    function closeModal(){
+        const modalContainer = document.getElementById('modal-container')
+        modalContainer.classList.remove('show-modal')
+    }
+    closeBtn.forEach(c => c.addEventListener('click', closeModal))
+  </script>
 </body>
 </html>

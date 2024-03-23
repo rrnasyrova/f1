@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 
-body {
+.prediction body {
     margin: 0;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../img/drivers.jpeg') center/cover;
     backdrop-filter: blur(5px);

@@ -203,7 +203,7 @@ nav li:hover > .submenu {
 
 .help button:hover{
     transform: scale(1.1);
-    background: rgba(121, 1, 1, 0.699);
+    background: rgba(46, 0, 0, 0.864);
     color: #fff;
 }
 

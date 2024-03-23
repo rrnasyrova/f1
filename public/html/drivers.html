@@ -56,88 +56,37 @@
             <br>В гонке участвует 20 болидов, 10 команд по два пилота в каждой. На старт конкретной гонки может выйти и меньшее количество пилотов: например, из-за аварий, поломок машины или дисквалификации.</p>
         </div> 
         <h2>Пилоты Формулы-1</h2>
-        <section class="container">
-            <a href="verstapen.html" class="driver">
-                <img src="../img/p1.png" alt="Трасса 1">
-                <h3>Макс Ферстаппен</h3>
-            </a>
-            <a href="hamilton.html" class="driver">
-                <img src="../img/p2.png" alt="Трасса 2">
-                <h3>Льюис Хэмилтон</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p3.png" alt="Трасса 3">
-                <h3>Вальтери Боттас</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p4.png" alt="Трасса 4">
-                <h3>Серхио Перес</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p5.png" alt="Трасса 5">
-                <h3>Карлос Сайнс</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p6.png" alt="Трасса 6">
-                <h3>Ладно Норрис</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p7.png" alt="Трасса 1">
-                <h3>Шарль Леклерк</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p8.png" alt="Трасса 2">
-                <h3>Даниэль Риккардо</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p9.png" alt="Трасса 3">
-                <h3>Пьер Гасли</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p10.png" alt="Трасса 1">
-                <h3>Фернандо Алонсо</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p11.png" alt="Трасса 2">
-                <h3>Эстебан Окон</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p12.png" alt="Трасса 3">
-                <h3>Лэнс Стролл</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p13.png" alt="Трасса 1">
-                <h3>Юки Цунода</h3>
-                </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p14.png" alt="Трасса 2">
-                <h3>Джордж Рассел</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p15.png" alt="Трасса 3">
-                <h3>Оскар Пиастри</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p16.png" alt="Трасса 1">
-                <h3>Логан Сарджент</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p17.png" alt="Трасса 2">
-                <h3>Нико Хюлькенберг</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p18.png" alt="Трасса 3">
-                <h3>Кевин Магнуссен</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p19.png" alt="Трасса 1">
-                <h3>Гуаньюй Чжоу</h3>
-            </a>
-            <a href="drivers.html" class="driver">
-                <img src="../img/p20.png" alt="Трасса 2">
-                <h3>Алекс Албон</h3>
-            </a>
-        </section>
+    </section>
+    <section class="container">
+        <div id="drivers-list"></div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $.get('/api/drivers', function(data) {
+                    for (var i = 0; i < data.length; i++) {
+                        $('#drivers-list').append('<a href="driver.html?id=' + data[i].id + '" class="driver"><img src="' + data[i].photo + '" alt="' + data[i].name + '"><h3>' + data[i].name + '</h3></a>');
+                    }
+                });
+                ('.driver').click(function(e) {
+                    e.preventDefault();
+                    var driverId =(this).data('id');
+                    window.location.href = 'driver.html?id=' + driverId;
+                });
+            });
+        </script>
+    </section>
+    <section class="container-button">
+      <div class="add-new-drivers">
+        <a href="add_new_driver.html">
+          <button type="submit">Добавить нового гонщика</button>
+        </a>
+        <a href="delete_driver.html">
+          <button type="submit">Удалить гонщика</button>
+        </a>
+        <a href="change_info_driver.html">
+          <button type="submit">Изменить информацию о гонщике</button>
+        </a>
+      </div>
     </section>
     <footer>
         <div class="footer">
