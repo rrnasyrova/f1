@@ -259,7 +259,7 @@ def plot_4():
 def plot_5():
     return send_file('data_plot/plot_5.png', mimetype='image/png')
 
-@app.route('/api/result_prediction', methods=['GET', 'POST'])
+@app.route('/api/result_prediction', methods=['POST'])
 def show_prediction_result():
 
     global name

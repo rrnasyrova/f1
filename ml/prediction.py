@@ -3,9 +3,10 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 
 def prediction(name, round_num, driver_points, driver_position, constructor_points, constructor_position, driver_wins, driver_age, constructor_wins):
-    model = joblib.load('/Users/reginanasyrova/Desktop/f1/ml/model.pkl')
+   
+    model = joblib.load('ml/model.pkl')
 
-    main = pd.read_csv("/Users/reginanasyrova/Desktop/f1/ml/f1_data.csv")
+    main = pd.read_csv("ml/f1_data.csv")
     main.drop('Unnamed: 0', axis=1, inplace=True)
 
     test = main[(main['season'] == 2023) & (main['round'] == round_num)]
